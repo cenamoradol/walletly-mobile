@@ -30,7 +30,7 @@ function AppContent() {
 
   return (
     <NavigationContainer>
-      <StatusBar style="light" backgroundColor={Colors.background} />
+      <StatusBar style="light" />
       <AppNavigator isLoggedIn={isLoggedIn} />
     </NavigationContainer>
   );
