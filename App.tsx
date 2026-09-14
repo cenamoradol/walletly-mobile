@@ -1,20 +1,49 @@
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import AppNavigator from './src/navigation/AppNavigator';
+import { Colors } from './src/theme/theme';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
+import {
+  useFonts,
+  Manrope_400Regular,
+  Manrope_500Medium,
+  Manrope_600SemiBold,
+  Manrope_700Bold,
+  Manrope_800ExtraBold,
+} from '@expo-google-fonts/manrope';
 
-export default function App() {
+function AppContent() {
+  const { isLoggedIn, loading } = useAuth();
+  const [fontsLoaded] = useFonts({
+    Manrope_400Regular,
+    Manrope_500Medium,
+    Manrope_600SemiBold,
+    Manrope_700Bold,
+    Manrope_800ExtraBold,
+  });
+
+  if (!fontsLoaded || loading) {
+    return null; // Or a splash screen
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <StatusBar style="light" backgroundColor={Colors.background} />
+      <AppNavigator isLoggedIn={isLoggedIn} />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import { CurrencyProvider } from './src/context/CurrencyContext';
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <CurrencyProvider>
+        <AppContent />
+      </CurrencyProvider>
+    </AuthProvider>
+  );
+}
