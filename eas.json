@@ -17,6 +17,11 @@
     "production": {}
   },
   "submit": {
-    "production": {}
+    "preview": {
+      "ascAppId": "6812594627"
+    },
+    "production": {
+      "ascAppId": "6812594627"
+    }
   }
 }
