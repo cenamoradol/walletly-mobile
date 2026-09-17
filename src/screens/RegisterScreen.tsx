@@ -12,7 +12,7 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
-import { User, Mail, Lock, Eye, EyeOff, ArrowLeft, Chrome, Apple } from 'lucide-react-native';
+import { User, Mail, Lock, Eye, EyeOff, ArrowLeft, Globe, Apple } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors, Spacing } from '../theme/theme';
 import { AuthService } from '../services/auth.service';
@@ -196,7 +196,7 @@ export default function RegisterScreen() {
 
               <View style={styles.socialRow}>
                 <TouchableOpacity style={styles.socialBtn}>
-                  <Chrome color="#fff" size={20} />
+                  <Globe color="#fff" size={20} />
                   <Text style={styles.socialBtnText}>Google</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.socialBtn}>
